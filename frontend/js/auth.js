@@ -180,13 +180,16 @@ async function performLogin(username, password) {
         
         const data = await response.json();
         
-        if (response.ok && data.access_token) {
+        // FIXED: Backend returns camelCase (accessToken), not snake_case (access_token)
+        if (response.ok && data.accessToken) {
             // Login successful
             handleLoginSuccess(data);
         } else {
             // Login failed
             state.loginAttempts++;
-            handleLoginFailure(data.message || 'Invalid username or password');
+            // FIXED: Handle nested error object (data.error.message) or direct message
+            const errorMessage = (data.error && data.error.message) || data.message || 'Invalid username or password';
+            handleLoginFailure(errorMessage);
         }
     } catch (error) {
         console.error('Login error:', error);
@@ -200,9 +203,10 @@ async function performLogin(username, password) {
 // Handle successful login
 function handleLoginSuccess(data) {
     // Store tokens
-    localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, data.access_token);
-    if (data.refresh_token) {
-        localStorage.setItem(CONFIG.REFRESH_TOKEN_KEY, data.refresh_token);
+    // FIXED: Use camelCase properties
+    localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, data.accessToken);
+    if (data.refreshToken) {
+        localStorage.setItem(CONFIG.REFRESH_TOKEN_KEY, data.refreshToken);
     }
     
     // Reset login attempts
@@ -213,7 +217,8 @@ function handleLoginSuccess(data) {
     
     // Redirect to Google Workspace after short delay
     setTimeout(() => {
-        redirectToWorkspace(data.saml_response);
+        // FIXED: Use camelCase property
+        redirectToWorkspace(data.samlResponse);
     }, 1500);
 }
 
@@ -292,8 +297,9 @@ async function refreshAuthToken() {
         
         const data = await response.json();
         
-        if (response.ok && data.access_token) {
-            localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, data.access_token);
+        // FIXED: Backend returns camelCase (accessToken)
+        if (response.ok && data.accessToken) {
+            localStorage.setItem(CONFIG.TOKEN_STORAGE_KEY, data.accessToken);
             return true;
         } else {
             clearAuthTokens();
