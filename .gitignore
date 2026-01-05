@@ -1,32 +1,101 @@
-# If you prefer the allow list template instead of the deny list, see community template:
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-#
-# Binaries for programs and plugins
-*.exe
-*.exe~
-*.dll
-*.so
-*.dylib
+# Binaries and executables
+backend/bin/
+backend/*.exe
+backend/*.dll
+backend/*.so
+backend/*.dylib
 
-# Test binary, built with `go test -c`
+# Go build artifacts
+backend/vendor/
 *.test
-
-# Code coverage profiles and other test artifacts
 *.out
-coverage.*
-*.coverprofile
-profile.cov
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
-
-# Go workspace file
-go.work
-go.work.sum
-
-# env file
+# Environment variables
 .env
+.env.local
+.env.*.local
+backend/.env
+backend/.env.*
 
-# Editor/IDE
-# .idea/
-# .vscode/
+# Certificates and keys (NEVER commit these!)
+certs/*.key
+certs/*.pem
+certs/*.crt
+*.key
+*.pem
+*.crt
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+backend/*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node modules (if you add any frontend tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Generated proto files (can be regenerated)
+backend/proto/**/*.pb.go
+backend/proto/**/*_grpc.pb.go
+backend/proto/**/*.gw.go
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Testing
+coverage.txt
+coverage.out
+
+# Build artifacts
+dist/
+build/
+
+# Secrets and credentials
+config/secrets.yaml
+config/production.yaml
+secrets/
+
+# Documentation builds
+docs/_build/
+
+# Python (if you add any Python scripts)
+__pycache__/
+*.py[cod]
+.Python
+venv/
+ENV/
+
+# Terraform (if you add infrastructure as code)
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Configuration overrides
+config/local.yaml
+config/dev.yaml
