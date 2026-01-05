@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-option go_package = "github.com/mkseven1/sso/proto/auth;authpb";
+option go_package = "github.com/mkseven15/sso/proto/auth;authpb";
 
 import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
