@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MkSeven1 - Sign In</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="cs-body">
+    <div class="cs-wrapper">
+        <div class="cs-container">
+            <!-- Logo -->
+            <div class="cs-login-logo" id="logo-container"></div>
+            
+            <!-- Main Login Form -->
+            <div id="login-container" class="cs-login-container">
+                <div class="cs-heading-container">
+                    <h1 class="cs-heading">Sign In</h1>
+                </div>
+
+                <!-- Error Message Display -->
+                <div id="error-container" class="error-message" style="display: none;"></div>
+
+                <!-- Username Step -->
+                <div id="username-step" class="step-container">
+                    <form id="username-form">
+                        <div class="input-group">
+                            <label for="username" class="cs-input-question">Username</label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                name="username" 
+                                class="input" 
+                                autocomplete="username"
+                                required
+                                autofocus>
+                        </div>
+                        
+                        <div class="cs-button-wrapper first">
+                            <button type="submit" class="cs-button">Next</button>
+                        </div>
+
+                        <div class="forgot-username-link-container">
+                            <a href="#" id="forgot-username-link">Forgot Username?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Password Step -->
+                <div id="password-step" class="step-container" style="display: none;">
+                    <form id="password-form">
+                        <div class="input-group">
+                            <p class="user-display"><strong>Username:</strong> <span id="username-display"></span></p>
+                        </div>
+
+                        <div class="input-group cs-password-container">
+                            <label for="password" class="cs-input-question">Password</label>
+                            <div class="password-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="input" 
+                                    autocomplete="current-password"
+                                    required>
+                                <button type="button" class="input-toggle" id="toggle-password" aria-label="Show password">
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="cs-button-wrapper">
+                            <button type="submit" class="cs-button" id="login-button">
+                                <span id="login-text">Sign In</span>
+                                <span id="login-spinner" style="display: none;">⏳</span>
+                            </button>
+                        </div>
+
+                        <div class="switch-policies">
+                            <a href="#" id="back-to-username">← Back</a>
+                        </div>
+
+                        <div class="forgot-password">
+                            <a href="#" id="forgot-password-link">Forgot Password?</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Forgot Username Form -->
+                <div id="forgot-username-container" style="display: none;">
+                    <div class="cs-heading-container">
+                        <h2 class="cs-heading">Forgot Username</h2>
+                        <p>Enter your email address to receive your username.</p>
+                    </div>
+
+                    <form id="forgot-username-form">
+                        <div class="input-group">
+                            <label for="recovery-email" class="cs-input-question">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="recovery-email" 
+                                name="email" 
+                                class="input" 
+                                required>
+                        </div>
+
+                        <div class="cs-button-wrapper">
+                            <button type="submit" class="cs-button">Submit</button>
+                        </div>
+
+                        <div class="switch-policies">
+                            <a href="#" id="back-from-forgot-username">← Back to Sign In</a>
+                        </div>
+                    </form>
+
+                    <div id="forgot-username-startover-wrapper"></div>
+                </div>
+
+                <!-- Forgot Password Form -->
+                <div id="forgot-password-container" style="display: none;">
+                    <div class="cs-heading-container">
+                        <h2 class="cs-heading">Reset Password</h2>
+                        <p>Enter your username and email to reset your password.</p>
+                    </div>
+
+                    <form id="forgot-password-form">
+                        <div class="input-group">
+                            <label for="reset-username" class="cs-input-question">Username</label>
+                            <input 
+                                type="text" 
+                                id="reset-username" 
+                                name="username" 
+                                class="input" 
+                                required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="reset-email" class="cs-input-question">Email Address</label>
+                            <input 
+                                type="email" 
+                                id="reset-email" 
+                                name="email" 
+                                class="input" 
+                                required>
+                        </div>
+
+                        <div class="cs-button-wrapper">
+                            <button type="submit" class="cs-button">Send Reset Link</button>
+                        </div>
+
+                        <div class="switch-policies">
+                            <a href="#" id="back-from-forgot-password">← Back to Sign In</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Success Message -->
+                <div id="success-container" style="display: none;">
+                    <div class="success-message">
+                        <h2>✓ Authentication Successful</h2>
+                        <p>Redirecting to your workspace...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>
